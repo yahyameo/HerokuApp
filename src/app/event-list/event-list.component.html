@@ -1,0 +1,19 @@
+
+<div style="padding-top:80px;margin:auto" class="row col-md-12">
+        <div class="col-md-12 col-xs-12">
+          <div *ngFor="let item of eventsList async" class="info-box col-md-6">
+            
+            <div class="info-box-content">
+              
+              <h3 class="info-box-text">{{item.title}}</h3>
+              <p (click)="callServer()">{{item.description}}</p>
+              <span><a class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/detail',item.id]">Detail</a> </span>
+              <div><small>modified: {{item.modified}}</small><br/>
+               </div>
+
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+         </div>

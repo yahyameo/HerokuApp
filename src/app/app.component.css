@@ -1,0 +1,20 @@
+
+.hero {
+    position:relative;
+    background-color:yellow;
+    height:100px !important;
+    width:100% !important;
+}
+.hero:after {
+    z-index: -1;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    content:'';
+    width: 0;
+    height: 0;
+    border-top: solid 10px yellow;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+}

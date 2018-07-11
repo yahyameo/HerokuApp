@@ -14,13 +14,24 @@ export class EventListComponent implements OnInit {
 eventsList:Observable<any[]>
 apiKey:any;
 hash:any;
+searchBy:any;
      constructor(private http: HttpClient) {
    this.apiKey="f6522c0f5c1b5ed07444ebab15ab6b86";
    this.hash="32f84dc7ff91c1a7662a6a0a646e9d35";
    this.getData();
 }
+onSubmit(){
+  this.getData();
+}
 getData():Observable<any[]>{
-      let apiUrl = 'https://gateway.marvel.com/v1/public/events?apikey='+this.apiKey+'&hash='+this.hash+'&ts=1';   
+    var apiUrl=''
+  if(this.searchBy){
+           apiUrl = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith='+this.searchBy+'&apikey='+this.apiKey+'&hash='+this.hash+'&ts=1';   
+  }
+  else{
+       apiUrl = 'https://gateway.marvel.com/v1/public/characters?apikey='+this.apiKey+'&hash='+this.hash+'&ts=1';   
+
+  }
       this.http.get(apiUrl).subscribe(data => {
       this.eventsList=data['data']['results'];
     });

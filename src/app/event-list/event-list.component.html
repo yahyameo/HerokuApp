@@ -1,11 +1,15 @@
 
 <div style="padding-top:80px;margin:auto" class="row col-md-12">
         <div class="col-md-12 col-xs-12">
+           <form (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="searchBy" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
           <div *ngFor="let item of eventsList async" class="info-box col-md-6">
             
             <div class="info-box-content">
               
-              <h3 class="info-box-text">{{item.title}}</h3>
+              <h3 class="info-box-text">{{item.name}}</h3>
               <p (click)="callServer()">{{item.description}}</p>
               <span><a class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/detail',item.id]">Detail</a> </span>
               <div><small>modified: {{item.modified}}</small><br/>
